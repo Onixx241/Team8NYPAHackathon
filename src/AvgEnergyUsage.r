@@ -35,7 +35,7 @@ model_data <- building_data %>%
   select(
     EUI,
     Year.Built,
-    Multifamily.Housing...Number.of.Bedrooms
+    Multifamily.Housing...Number.of.Bedrooms.Density..Number.per.1.000.sq.ft.
   ) %>%
   filter(is.finite(EUI), EUI > 0)
 
@@ -43,7 +43,7 @@ model_data <- model_data[complete.cases(model_data), ]
 
 energy_prediction <- lm(
   EUI ~ Year.Built +
-    Multifamily.Housing...Number.of.Bedrooms,
+    Multifamily.Housing...Number.of.Bedrooms.Density..Number.per.1.000.sq.ft.,
   data = model_data
 )
 
@@ -53,8 +53,8 @@ average_energy_usage <- model_data %>%
   group_by(Year.Built) %>%
   summarise(
     average_EUI = mean(EUI),
-    average_bedrooms = mean(
-      Multifamily.Housing...Number.of.Bedrooms
+    average_bedroom_density = mean(
+      Multifamily.Housing...Number.of.Bedrooms.Density..Number.per.1.000.sq.ft.
     ),
     buildings = n(),
     .groups = "drop"
@@ -66,7 +66,7 @@ testing_model_data <- testing_data %>%
   select(
     EUI,
     Year.Built,
-    Multifamily.Housing...Number.of.Bedrooms
+    Multifamily.Housing...Number.of.Bedrooms.Density..Number.per.1.000.sq.ft.
   ) %>%
   filter(is.finite(EUI), EUI > 0)
 
@@ -99,13 +99,54 @@ scatter <- ggplot(
     color = "firebrick"
   ) +
   labs(
-    title = "Predicted vs. Actual Energy Usage per Square Foot",
-    x = "Actual Energy Usage per Square Foot (kBtu/ft²)",
-    y = "Predicted Energy Usage per Square Foot (kBtu/ft²)"
+    title = "Correlation of Energy Use Intensity with Building Year and Bedroom Density",
+    x = "Actual Energy Use per Square Foot (kBtu/ft²)",
+    y = "Predicted Energy Use per Square Foot (kBtu/ft²)"
+  ) +
+  coord_cartesian(
+    xlim = c(
+      0,
+      quantile(prediction_data$actual_EUI, 0.99, na.rm = TRUE)
+    ),
+    ylim = c(
+      0,
+      quantile(prediction_data$predicted_EUI, 0.99, na.rm = TRUE)
+    )
   ) +
   theme_minimal()
 
 
 print(scatter)
 
-View(average_energy_usage)
+output_directory <- normalizePath(
+  ".",
+  winslash = "\\",
+  mustWork = TRUE
+)
+png_file <- file.path(
+  output_directory,
+  "energy_usage_per_square_foot.png"
+)
+html_file <- file.path(
+  output_directory,
+  "energy_usage_per_square_foot.html"
+)
+
+ggsave(
+  filename = png_file,
+  plot = scatter,
+  width = 8,
+  height = 6,
+  units = "in",
+  dpi = 300,
+  device = "png"
+)
+
+htmlwidgets::saveWidget(
+  plotly::ggplotly(scatter),
+  html_file,
+  selfcontained = TRUE
+)
+
+print(paste("PNG saved to:", png_file))
+print(paste("HTML saved to:", html_file))

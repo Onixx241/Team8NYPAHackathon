@@ -13,6 +13,13 @@ const SLOTS = {
     { title: "Predicted vs. actual energy", note: "Testing file · dashed line = perfect prediction", src: "charts/predicted_vs_actual.html", wide: true },
     { title: "Accuracy vs. baseline", note: "MAE, MAPE and R² on the testing file", src: "charts/metrics.html" },
     { title: "10 largest errors", note: "Buildings using the most above or below prediction", src: "charts/top_errors.html" },
+    { title: "Predicted EUI vs. NYC average", note: "Per-building % difference from 74.9 kBtu/ft²", src: "charts/pct_vs_average.html", wide: true },
+  ],
+  advanced: [
+    { title: "Model comparison", note: "MAE, MAPE and R² for each method vs. baseline, on the testing file", src: "charts/model_comparison.html", wide: true },
+    { title: "Predicted vs. actual (filtered)", note: "Responds to the year built and height filters", src: "charts/adv_predicted_vs_actual.html" },
+    { title: "Feature importance", note: "How much each extra characteristic improves accuracy", src: "charts/feature_importance.html" },
+    { title: "Buildings most above prediction", note: "Largest positive errors: first candidates for an efficiency program", src: "charts/above_prediction.html", wide: true },
   ],
 };
 

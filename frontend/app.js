@@ -16,11 +16,11 @@ const SLOTS = {
     { title: "Regression accuracy", note: "Linear regression scored on the testing file", src: "charts/metrics.html" },
     { title: "What the numbers mean", note: "How to read the accuracy card", html: `
       <dl class="glossary">
-        <dt>R²</dt><dd>How much of the difference between buildings the model explains, from 0 to 1. Higher is better.</dd>
-        <dt>MAE</dt><dd>The average miss, in kBtu/ft². Lower is better.</dd>
-        <dt>RMSE</dt><dd>Also an average miss, but big misses count more. Lower is better.</dd>
-        <dt>MAPE</dt><dd>The average miss as a percent of actual use. Lower is better.</dd>
-        <dt>Within 20%</dt><dd>Share of buildings predicted within 20% of their actual use. Higher is better.</dd>
+        <div class="term"><dt>R²</dt><dd>How much of the difference between buildings the model explains, from 0 to 1.<span class="dir up">↑ Higher is better</span></dd></div>
+        <div class="term"><dt>MAE</dt><dd>The average miss, in kBtu/ft².<span class="dir down">↓ Lower is better</span></dd></div>
+        <div class="term"><dt>RMSE</dt><dd>Also an average miss, but big misses count more.<span class="dir down">↓ Lower is better</span></dd></div>
+        <div class="term"><dt>MAPE</dt><dd>The average miss as a percent of actual use.<span class="dir down">↓ Lower is better</span></dd></div>
+        <div class="term"><dt>Within 20%</dt><dd>Share of buildings predicted within 20% of their actual use.<span class="dir up">↑ Higher is better</span></dd></div>
       </dl>` },
   ],
   advanced: [

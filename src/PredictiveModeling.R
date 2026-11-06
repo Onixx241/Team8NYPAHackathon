@@ -78,10 +78,26 @@ print(summary(future_estimation))
 View(prediction_data)
 write.csv(prediction_data, file="accuracy.csv",row.names=FALSE)
 print(ggplotly(scatter))
+ggsave(
+  filename = ".\\scatter.png",
+  plot = scatter,
+  width = 8,
+  height = 6,
+  units = "in",
+  dpi = 300
+)
 htmlwidgets::saveWidget(
   ggplotly(scatter),
   "scatter.html",
   selfcontained = TRUE
 )
 View(training_dataset)
+ggsave(
+  filename = "scatter.png",
+  plot = scatter,
+  width = 8,
+  height = 6,
+  units = "in",
+  dpi = 300
+)
 #print(scatter)

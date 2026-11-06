@@ -6,10 +6,7 @@ const SLOTS = {
   minimum: [
     { title: "EUI summary", note: "Mean and median EUI across training buildings", src: "charts/eui_summary.html", wide: true },
     { title: "Simple predictor: predicted vs. actual EUI", note: "Year built + bedrooms · testing file, 2,495 buildings · dashed line = perfect prediction", src: "charts/eui_predictor_simple.html", wide: true },
-    { title: "Model comparison", note: "Simple predictor vs. regression on the testing file", src: "charts/model_comparison_min.html" },
-    { title: "EUI by year built", note: "How energy per ft² changes with construction year", src: "charts/eui_by_year.html" },
-    { title: "EUI by building height", note: "High-rise (10+ stories) vs. mid-rise (5–9) vs. other", src: "charts/eui_by_height.html" },
-    { title: "EUI by number of bedrooms", note: "Bedrooms or bedroom density vs. EUI", src: "charts/eui_by_bedrooms.html" },
+    { title: "Model comparison", note: "Simple predictor vs. regression on the testing file", src: "charts/model_comparison_min.html", wide: true },
   ],
   intermediate: [
     { title: "Predicted vs. actual EUI", note: "Testing file, 2,495 buildings · dashed line = perfect prediction", src: "charts/predicted_vs_actual.html", wide: true },

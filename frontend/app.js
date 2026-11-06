@@ -19,12 +19,6 @@ const SLOTS = {
         <div class="term"><dt>Within 20%</dt><dd>Share of buildings predicted within 20% of their actual use.<span class="dir up">↑ Higher is better</span></dd></div>
       </dl>` },
   ],
-  advanced: [
-    { title: "Model comparison", note: "MAE, MAPE and R² for each method vs. baseline, on the testing file", src: "charts/model_comparison.html", wide: true },
-    { title: "Predicted vs. actual (filtered)", note: "Responds to the year built and height filters", src: "charts/adv_predicted_vs_actual.html" },
-    { title: "Feature importance", note: "How much each extra characteristic improves accuracy", src: "charts/feature_importance.html" },
-    { title: "Buildings most above prediction", note: "Largest positive errors: first candidates for an efficiency program", src: "charts/above_prediction.html", wide: true },
-  ],
 };
 
 function placeholder(slot) {

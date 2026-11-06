@@ -18,9 +18,6 @@ Save each chart into `frontend/charts/` with the filename the slot expects:
 |---|---|
 | Minimum | `charts/eui_predictor_simple.html`, `charts/model_comparison_min.html` |
 | Intermediate | `charts/predicted_vs_actual.html`, `charts/metrics.html` |
-| Advanced (mock) | `charts/model_comparison.html`, `charts/adv_predicted_vs_actual.html`, `charts/feature_importance.html`, `charts/above_prediction.html` |
-
-The Advanced filters are disabled mock controls. Wiring them up for real is easiest with a Shiny app, or by exporting one file per filter combination.
 
 Example from R:
 

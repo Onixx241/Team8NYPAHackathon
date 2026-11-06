@@ -15,7 +15,6 @@
     <nav class="tabs" role="tablist">
       <button role="tab" data-tab="minimum" aria-selected="true">Minimum</button>
       <button role="tab" data-tab="intermediate" aria-selected="false">Intermediate</button>
-      <button role="tab" data-tab="advanced" aria-selected="false">Advanced <span class="badge">mock</span></button>
     </nav>
   </header>
 
@@ -37,23 +36,6 @@
         </div>
       </div>
       <div class="grid" data-slots="intermediate"></div>
-    </section>
-
-    <section id="advanced" class="panel" role="tabpanel" hidden>
-      <h2>Prediction dashboard</h2>
-      <p class="lede">More building characteristics and several models compared on the same testing file. Mock layout: the filters are disabled until the R output is connected.</p>
-      <div class="filters" aria-label="Filters (mock)">
-        <label>Year built
-          <select disabled><option>All years</option><option>Before 1900</option><option>1900–1945</option><option>1946–1979</option><option>1980 and later</option></select>
-        </label>
-        <label>Building height
-          <select disabled><option>All heights</option><option>High-rise (10+ stories)</option><option>Mid-rise (5–9 stories)</option><option>Low-rise</option></select>
-        </label>
-        <label>Model
-          <select disabled><option>Best model</option><option>Multiple regression</option><option>Ridge / lasso</option><option>Random forest</option><option>Gradient boosting</option></select>
-        </label>
-      </div>
-      <div class="grid" data-slots="advanced"></div>
     </section>
   </main>
 

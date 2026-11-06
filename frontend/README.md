@@ -1,16 +1,32 @@
-# React + Vite
+# Frontend (placeholder)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Plain HTML/CSS/JS with no build step. Each chart slot is an iframe that loads an HTML file exported from R.
 
-Currently, two official plugins are available:
+## Run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+cd frontend
+python3 -m http.server 8000
+# open http://localhost:8000
+```
 
-## React Compiler
+## Plug in R output
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Save each chart into `frontend/charts/` with the filename the slot expects:
 
-## Expanding the Oxlint configuration
+| Tab | File |
+|---|---|
+| Minimum | `charts/eui_summary.html`, `charts/eui_by_year.html`, `charts/eui_by_height.html`, `charts/eui_by_bedrooms.html` |
+| Intermediate | `charts/predicted_vs_actual.html`, `charts/metrics.html`, `charts/top_errors.html` |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Example from R:
+
+```r
+library(plotly); library(htmlwidgets)
+saveWidget(ggplotly(scatter), "frontend/charts/predicted_vs_actual.html", selfcontained = TRUE)
+```
+
+Tables can be saved the same way with `DT::datatable(...)`.
+
+To use a Shiny app instead, set that slot's `src` in `app.js` to its URL (for example `http://localhost:3838`).
+Slots whose file is missing show a "Waiting for R output" placeholder.

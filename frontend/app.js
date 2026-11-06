@@ -4,22 +4,20 @@
 // If the file is missing, a placeholder card is shown instead.
 const SLOTS = {
   minimum: [
-    { title: "EUI summary", note: "Mean and median EUI across training buildings", src: "charts/eui_summary.html", wide: true },
-    { title: "EUI by year built", note: "How energy per ft² changes with construction year", src: "charts/eui_by_year.html" },
-    { title: "EUI by building height", note: "High-rise (10+ stories) vs. mid-rise (5–9) vs. other", src: "charts/eui_by_height.html" },
-    { title: "EUI by number of bedrooms", note: "Bedrooms or bedroom density vs. EUI", src: "charts/eui_by_bedrooms.html" },
+    { title: "Simple predictor: predicted vs. actual EUI", note: "Year built + bedrooms · testing file, 2,495 buildings · dashed line = perfect prediction", src: "charts/eui_predictor_simple.html", wide: true },
+    { title: "Model comparison", note: "Simple predictor vs. regression on the testing file", src: "charts/model_comparison_min.html", wide: true },
   ],
   intermediate: [
     { title: "Predicted vs. actual EUI", note: "Testing file, 2,495 buildings · dashed line = perfect prediction", src: "charts/predicted_vs_actual.html", wide: true },
     { title: "Regression accuracy", note: "Linear regression scored on the testing file", src: "charts/metrics.html" },
-    { title: "10 largest errors", note: "Buildings using the most above or below prediction", src: "charts/top_errors.html" },
-    { title: "Predicted EUI vs. NYC average", note: "Per-building % difference from 74.9 kBtu/ft²", src: "charts/pct_vs_average.html", wide: true },
-  ],
-  advanced: [
-    { title: "Model comparison", note: "MAE, MAPE and R² for each method vs. baseline, on the testing file", src: "charts/model_comparison.html", wide: true },
-    { title: "Predicted vs. actual (filtered)", note: "Responds to the year built and height filters", src: "charts/adv_predicted_vs_actual.html" },
-    { title: "Feature importance", note: "How much each extra characteristic improves accuracy", src: "charts/feature_importance.html" },
-    { title: "Buildings most above prediction", note: "Largest positive errors: first candidates for an efficiency program", src: "charts/above_prediction.html", wide: true },
+    { title: "What the numbers mean", note: "How to read the accuracy card", html: `
+      <dl class="glossary">
+        <div class="term"><dt>R²</dt><dd>How much of the difference between buildings the model explains, from 0 to 1.<span class="dir up">↑ Higher is better</span></dd></div>
+        <div class="term"><dt>MAE</dt><dd>The average miss, in kBtu/ft².<span class="dir down">↓ Lower is better</span></dd></div>
+        <div class="term"><dt>RMSE</dt><dd>Also an average miss, but big misses count more.<span class="dir down">↓ Lower is better</span></dd></div>
+        <div class="term"><dt>MAPE</dt><dd>The average miss as a percent of actual use.<span class="dir down">↓ Lower is better</span></dd></div>
+        <div class="term"><dt>Within 20%</dt><dd>Share of buildings predicted within 20% of their actual use.<span class="dir up">↑ Higher is better</span></dd></div>
+      </dl>` },
   ],
 };
 
@@ -47,6 +45,14 @@ async function renderSlot(slot) {
   const card = document.createElement("article");
   card.className = "card" + (slot.wide ? " wide" : "");
   card.innerHTML = `<header><h3>${slot.title}</h3><p>${slot.note}</p></header>`;
+  if (slot.html) {
+    const body = document.createElement("div");
+    body.className = "card-body";
+    body.innerHTML = slot.html;
+    card.appendChild(body);
+    return card;
+  }
+
   const frame = document.createElement("div");
   frame.className = "frame";
   card.appendChild(frame);

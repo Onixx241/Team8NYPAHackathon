@@ -6,6 +6,7 @@
   --border: #dde2e8;
   --accent: #1f6feb;
   --placeholder: #f0f3f7;
+  --good: #1a7f37;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -16,6 +17,7 @@
     --border: #2c3542;
     --accent: #5b9bff;
     --placeholder: #151a22;
+    --good: #3fb950;
   }
 }
 
@@ -116,38 +118,37 @@ h2 { margin: 0 0 4px; font-size: 1.15rem; }
 .formulas code { font-size: 0.85rem; }
 .muted { color: var(--muted); font-size: 0.85rem; }
 
-.badge {
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 1px 6px;
-  margin-left: 4px;
+.card-body { padding: 4px 16px 8px; }
+.glossary { margin: 0; font-size: 0.9rem; }
+.glossary .term {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 4px 14px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.glossary .term:last-child { border-bottom: 0; }
+.glossary dt { font-weight: 650; font-size: 0.95rem; }
+.glossary dd { margin: 0; color: var(--muted); }
+.glossary .dir {
+  display: inline-block;
+  margin-top: 6px;
+  margin-left: 0;
+  padding: 1px 8px;
   border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
   border: 1px solid var(--border);
-  color: var(--muted);
-  vertical-align: middle;
+  white-space: nowrap;
+}
+.glossary dd .dir { display: table; }
+.glossary .dir.up { color: var(--good); border-color: color-mix(in srgb, var(--good) 40%, transparent); background: color-mix(in srgb, var(--good) 10%, transparent); }
+.glossary .dir.down { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+@media (max-width: 420px) {
+  .glossary .term { grid-template-columns: 1fr; }
 }
 
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 20px;
-  margin: 0 0 16px;
-  padding: 12px 16px;
-  background: var(--surface);
-  border: 1px dashed var(--border);
-  border-radius: 10px;
-}
-.filters label { display: grid; gap: 4px; font-size: 0.85rem; color: var(--muted); }
-.filters select {
-  font: inherit;
-  color: var(--text);
-  background: var(--placeholder);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 6px 8px;
-  min-width: 180px;
-}
 
 footer { padding: 16px 24px 32px; color: var(--muted); font-size: 0.8rem; text-align: center; }
 

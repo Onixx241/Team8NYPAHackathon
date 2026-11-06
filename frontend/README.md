@@ -16,7 +16,7 @@ Save each chart into `frontend/charts/` with the filename the slot expects:
 
 | Tab | File |
 |---|---|
-| Minimum | `charts/eui_summary.html`, `charts/eui_by_year.html`, `charts/eui_by_height.html`, `charts/eui_by_bedrooms.html` |
+| Minimum | `charts/eui_summary.html`, `charts/eui_predictor_simple.html`, `charts/eui_by_year.html`, `charts/eui_by_height.html`, `charts/eui_by_bedrooms.html` |
 | Intermediate | `charts/predicted_vs_actual.html`, `charts/metrics.html` |
 | Advanced (mock) | `charts/model_comparison.html`, `charts/adv_predicted_vs_actual.html`, `charts/feature_importance.html`, `charts/above_prediction.html` |
 

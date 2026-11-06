@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Regression Accuracy</title>
+  <style>
+    :root { --bg: #ffffff; --text: #1c2430; --muted: #5d6878; --border: #dde2e8; --tile: #f6f7f9; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #1a2029; --text: #e6eaf0; --muted: #9aa5b4; --border: #2c3542; --tile: #151a22; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 16px; background: var(--bg); color: var(--text);
+           font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+    .tile { background: var(--tile); border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+    .label { font-size: 0.8rem; color: var(--muted); }
+    .value { font-size: 1.6rem; font-weight: 650; margin: 2px 0; font-variant-numeric: tabular-nums; }
+    .hint { font-size: 0.78rem; color: var(--muted); line-height: 1.35; }
+    p.note { margin: 14px 0 0; font-size: 0.78rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="tiles">
+    <div class="tile"><div class="label">R²</div><div class="value">0.14</div><div class="hint">Explains 14% of the variation</div></div>
+    <div class="tile"><div class="label">MAE</div><div class="value">23.7</div><div class="hint">Average miss, kBtu/ft²</div></div>
+    <div class="tile"><div class="label">RMSE</div><div class="value">34.0</div><div class="hint">Big misses count more</div></div>
+    <div class="tile"><div class="label">MAPE</div><div class="value">54.3%</div><div class="hint">Average miss in %</div></div>
+    <div class="tile"><div class="label">Within 20%</div><div class="value">48.9%</div><div class="hint">Buildings predicted within 20%</div></div>
+  </div>
+  <p class="note">Tested on 2,495 buildings.</p>
+</body>
+</html>

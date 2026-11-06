@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Model Comparison</title>
+  <style>
+    :root { --bg: #ffffff; --text: #1c2430; --muted: #5d6878; --border: #dde2e8; --head: #f6f7f9; --best: #1f6feb; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #1a2029; --text: #e6eaf0; --muted: #9aa5b4; --border: #2c3542; --head: #151a22; --best: #5b9bff; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 16px; background: var(--bg); color: var(--text);
+           font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 0.92rem; }
+    .wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: right; }
+    th:first-child, td:first-child { text-align: left; }
+    thead th { background: var(--head); font-weight: 600; vertical-align: bottom; }
+    thead small { display: block; font-weight: 400; color: var(--muted); font-size: 0.78rem; }
+    td.best { color: var(--best); font-weight: 650; }
+    p.note { margin: 12px 0 0; font-size: 0.78rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Measure</th>
+          <th>Simple<small>Year built + bedrooms</small></th>
+          <th>Regression<small>Occupancy, % cooled, densities</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>R² <small>(higher is better)</small></td><td>0.05</td><td class="best">0.14</td></tr>
+        <tr><td>MAE, kBtu/ft² <small>(lower)</small></td><td>23.8</td><td class="best">23.7</td></tr>
+        <tr><td>MAPE <small>(lower)</small></td><td class="best">53.9%</td><td>54.3%</td></tr>
+        <tr><td>Within 20% <small>(higher)</small></td><td>46.4%</td><td class="best">48.9%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Both models tested on the same 2,495 buildings. MAPE counts buildings with actual EUI ≥ 10. Highlighted = better.</p>
+</body>
+</html>

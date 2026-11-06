@@ -33,9 +33,8 @@ model_data <- building_data %>%
 
 model_data <- model_data[complete.cases(model_data), ]
 
-# Log EUI reduces the effect of unusually high-energy buildings.
 energy_prediction <- lm(
-  log(EUI) ~ Year.Built +
+  EUI ~ Year.Built +
     Multifamily.Housing...Number.of.Bedrooms,
   data = model_data
 )
@@ -69,10 +68,10 @@ testing_model_data <- testing_model_data[
 
 prediction_data <- data.frame(
   actual_EUI = testing_model_data$EUI,
-  predicted_EUI = exp(predict(
+  predicted_EUI = predict(
     energy_prediction,
     newdata = testing_model_data
-  ))
+  )
 )
 
 print(cor(
@@ -92,9 +91,9 @@ scatter <- ggplot(
     color = "firebrick"
   ) +
   labs(
-    title = "Predicted vs. Actual EUI",
-    x = "Actual EUI (kBtu/ft²)",
-    y = "Predicted EUI (kBtu/ft²)"
+    title = "Predicted vs. Actual Energy Usage per Square Foot",
+    x = "Actual Energy Usage per Square Foot (kBtu/ft²)",
+    y = "Predicted Energy Usage per Square Foot (kBtu/ft²)"
   ) +
   theme_minimal()
 

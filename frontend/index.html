@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NYC Building Energy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>NYC Multifamily Building Energy</h1>
+      <p class="sub">NYPA Use Case 2 · Team 8 · Training 9,976 buildings · Testing 2,495 buildings</p>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="minimum" aria-selected="true">Minimum</button>
+      <button role="tab" data-tab="intermediate" aria-selected="false">Intermediate</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="minimum" class="panel" role="tabpanel">
+      <h2>Energy use per square foot (EUI)</h2>
+      <p class="lede">EUI = weather-normalized site energy (kBtu) ÷ gross floor area (ft²), from the training file.</p>
+      <div class="grid" data-slots="minimum"></div>
+    </section>
+
+    <section id="intermediate" class="panel" role="tabpanel" hidden>
+      <h2>Linear regression: predicted vs. actual</h2>
+      <p class="lede">Model fit on the training file and scored on the testing file, compared against the floor area × median EUI baseline.</p>
+      <div class="grid" data-slots="intermediate"></div>
+    </section>
+  </main>
+
+  <footer>Data: NYC multifamily building data, prepared by NYPA (ENERGY STAR Portfolio Manager fields).</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

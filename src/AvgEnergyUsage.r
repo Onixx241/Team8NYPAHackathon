@@ -1,6 +1,13 @@
-install
+
+install.packages("dplyr")
+install.packages("ggplot2")
+install.packages("plotly")
+install.packages("htmlwidgets")
+
 library(dplyr)
 library(ggplot2)
+library(plotly)
+library(htmlwidgets)
 
 building_data <- read.csv(
   ".\\datafeed\\multifamily_building_energy_consumption_training_dataset.csv",
@@ -101,25 +108,4 @@ scatter <- ggplot(
 
 print(scatter)
 
-ggsave(
-  filename = ".\\scatterBeginner.png",
-  plot = scatter,
-  width = 8,
-  height = 6,
-  units = "in",
-  dpi = 300
-)
-htmlwidgets::saveWidget(
-  ggplotly(scatter),
-  "scatterBeginner.html",
-  selfcontained = TRUE
-)
-View(training_dataset)
-ggsave(
-  filename = "scatterBeginner.png",
-  plot = scatter,
-  width = 8,
-  height = 6,
-  units = "in",
-  dpi = 300
-)
+View(average_energy_usage)

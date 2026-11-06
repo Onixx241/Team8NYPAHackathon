@@ -14,6 +14,14 @@ const SLOTS = {
   intermediate: [
     { title: "Predicted vs. actual EUI", note: "Testing file, 2,495 buildings · dashed line = perfect prediction", src: "charts/predicted_vs_actual.html", wide: true },
     { title: "Regression accuracy", note: "Linear regression scored on the testing file", src: "charts/metrics.html" },
+    { title: "What the numbers mean", note: "How to read the accuracy card", html: `
+      <dl class="glossary">
+        <dt>R²</dt><dd>How much of the difference between buildings the model explains, from 0 to 1. Higher is better.</dd>
+        <dt>MAE</dt><dd>The average miss, in kBtu/ft². Lower is better.</dd>
+        <dt>RMSE</dt><dd>Also an average miss, but big misses count more. Lower is better.</dd>
+        <dt>MAPE</dt><dd>The average miss as a percent of actual use. Lower is better.</dd>
+        <dt>Within 20%</dt><dd>Share of buildings predicted within 20% of their actual use. Higher is better.</dd>
+      </dl>` },
   ],
   advanced: [
     { title: "Model comparison", note: "MAE, MAPE and R² for each method vs. baseline, on the testing file", src: "charts/model_comparison.html", wide: true },
@@ -47,6 +55,14 @@ async function renderSlot(slot) {
   const card = document.createElement("article");
   card.className = "card" + (slot.wide ? " wide" : "");
   card.innerHTML = `<header><h3>${slot.title}</h3><p>${slot.note}</p></header>`;
+  if (slot.html) {
+    const body = document.createElement("div");
+    body.className = "card-body";
+    body.innerHTML = slot.html;
+    card.appendChild(body);
+    return card;
+  }
+
   const frame = document.createElement("div");
   frame.className = "frame";
   card.appendChild(frame);

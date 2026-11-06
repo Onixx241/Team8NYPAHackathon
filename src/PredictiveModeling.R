@@ -25,9 +25,7 @@ testing_dataset$EUI <-
 future_estimation <- lm(
   EUI ~
     Occupancy +
-    `Year.Built` +
     `Multifamily.Housing...Percent.That.Can.Be.Cooled` +
-    `Multifamily.Housing...Percent.That.Can.Be.Heated` +
     `Multifamily.Housing...Number.of.Bedrooms.Density..Number.per.1.000.sq.ft.` +
     `Multifamily.Housing...Total.Number.of.Residential.Living.Units.Density..Number.per.1.000.sq.ft.`,
   data = training_dataset

@@ -74,5 +74,6 @@ scatter <- ggplot(
 
 print(summary(future_estimation))
 View(prediction_data)
+write.csv(prediction_data, file="accuracy.csv",row.names=FALSE)
 View(training_dataset)
 print(scatter)

@@ -1,5 +1,7 @@
 install.packages("tidymodels")
 install.packages("ggplot2")
+install.packages("plotly")
+library(plotly)
 library(tidymodels)
 library(ggplot2)
 
@@ -75,5 +77,11 @@ scatter <- ggplot(
 print(summary(future_estimation))
 View(prediction_data)
 write.csv(prediction_data, file="accuracy.csv",row.names=FALSE)
+print(ggplotly(scatter))
+htmlwidgets::saveWidget(
+  ggplotly(scatter),
+  "scatter.html",
+  selfcontained = TRUE
+)
 View(training_dataset)
-print(scatter)
+#print(scatter)

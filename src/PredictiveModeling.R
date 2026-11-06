@@ -33,6 +33,10 @@ future_estimation <- lm(
   data = training_dataset
 )
 
+future_predictions <- predict(
+  future_estimation,
+  newdata = testing_dataset
+)
 
 
 prediction_data <- data.frame(

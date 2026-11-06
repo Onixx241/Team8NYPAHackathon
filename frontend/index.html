@@ -28,17 +28,12 @@
 
     <section id="intermediate" class="panel" role="tabpanel" hidden>
       <h2>Linear regression: predicted vs. actual</h2>
-      <p class="lede">Model fit on the training file and scored on the testing file, compared against the floor area × median EUI baseline.</p>
+      <p class="lede">Model fit on the training file and scored on the testing file.</p>
       <div class="formulas">
         <div>
           <h3>MAPE (overall accuracy)</h3>
           <p><code>mean( |actual − predicted| ÷ actual ) × 100</code></p>
           <p class="muted">15% means predictions are 15% off actual use on average. Lower is better.</p>
-        </div>
-        <div>
-          <h3>% vs. NYC average EUI (per building)</h3>
-          <p><code>(predicted EUI − 74.9) ÷ 74.9 × 100</code></p>
-          <p class="muted">+20% means 20% more energy per ft² than the average multifamily building; a negative value means less than average.</p>
         </div>
       </div>
       <div class="grid" data-slots="intermediate"></div>

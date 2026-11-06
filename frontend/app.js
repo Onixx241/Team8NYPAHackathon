@@ -12,8 +12,6 @@ const SLOTS = {
   intermediate: [
     { title: "Predicted vs. actual EUI", note: "Testing file, 2,495 buildings · dashed line = perfect prediction", src: "charts/predicted_vs_actual.html", wide: true },
     { title: "Regression accuracy", note: "Linear regression scored on the testing file", src: "charts/metrics.html" },
-    { title: "10 largest errors", note: "Buildings using the most above or below prediction", src: "charts/top_errors.html" },
-    { title: "Predicted EUI vs. NYC average", note: "Per-building % difference from 74.9 kBtu/ft²", src: "charts/pct_vs_average.html", wide: true },
   ],
   advanced: [
     { title: "Model comparison", note: "MAE, MAPE and R² for each method vs. baseline, on the testing file", src: "charts/model_comparison.html", wide: true },

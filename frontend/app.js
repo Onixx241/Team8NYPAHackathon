@@ -4,7 +4,6 @@
 // If the file is missing, a placeholder card is shown instead.
 const SLOTS = {
   minimum: [
-    { title: "EUI summary", note: "Mean and median EUI across training buildings", src: "charts/eui_summary.html", wide: true },
     { title: "Simple predictor: predicted vs. actual EUI", note: "Year built + bedrooms · testing file, 2,495 buildings · dashed line = perfect prediction", src: "charts/eui_predictor_simple.html", wide: true },
     { title: "Model comparison", note: "Simple predictor vs. regression on the testing file", src: "charts/model_comparison_min.html", wide: true },
   ],
